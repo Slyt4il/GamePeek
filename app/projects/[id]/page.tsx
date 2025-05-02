@@ -274,14 +274,14 @@ function SortableCompetitorCard({
             )}
 
             <div className="flex items-center justify-between">
-              {(competitor.retailPrice !== undefined && competitor.retailPrice !== "") && (
+              {competitor.retailPrice !== undefined && competitor.retailPrice !== "" && (
                 <div className="flex items-center gap-2 text-sm">
                   <Tag className="h-4 w-4 text-muted-foreground" />
                   <span>
                     {competitor.retailPrice === 0 || competitor.retailPrice === "0" ? (
                       <span className="font-medium text-green-600 dark:text-green-400">Free</span>
                     ) : (
-                      <span>${competitor.retailPrice}</span>
+                      <span className="font-medium">${competitor.retailPrice}</span>
                     )}
                   </span>
                 </div>
@@ -1030,6 +1030,12 @@ export default function ProjectDetailPage() {
               <Edit className="h-4 w-4 mr-2" />
               Edit Project
             </Button>
+            <Link href={`/projects/${projectId}/graph`}>
+              <Button variant="outline">
+                <BarChart3 className="h-4 w-4 mr-2" />
+                Graph
+              </Button>
+            </Link>
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button className="gap-2 animate-fadeIn">
@@ -1300,7 +1306,7 @@ export default function ProjectDetailPage() {
                         type="file"
                         ref={fileInputRef}
                         onChange={handleFileChange}
-                        accept="image/*"
+                        accept="image/*, .png"
                         className="hidden"
                       />
                     </div>
@@ -1518,7 +1524,7 @@ export default function ProjectDetailPage() {
             <PlusCircle className="h-8 w-8 text-muted-foreground" />
           </div>
           <h2 className="text-xl font-medium mb-4">No competitors yet</h2>
-          <p className="text-muted-foreground mb-6 px-4">Add your first competitor to start your analysis.</p>
+          <p className="text-muted-foreground mb-6 px-4">Add your first competitor to view analysis.</p>
           <Button onClick={() => setOpen(true)}>Add a Competitor</Button>
         </div>
       ) : (
